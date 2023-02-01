@@ -1,32 +1,65 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { CloseOutlined } from "@mui/icons-material";
+import { Box, IconButton, Modal, Stack, Typography } from "@mui/material";
 import React from "react";
 
 type AnnotationModalPropsType = {
 	open: boolean;
 	setOpen: (open: boolean) => void;
+	title: string;
+	imageUrl?: string;
+	description: string;
 };
 
-const AnnotationModal = ({ open, setOpen }: AnnotationModalPropsType) => {
+const AnnotationModal = ({
+	open,
+	setOpen,
+	title,
+	imageUrl,
+	description,
+}: AnnotationModalPropsType) => {
 	return (
 		<Modal open={open} onClose={() => setOpen(false)}>
 			<div
 				style={{
+					width: "80%",
 					position: "absolute",
 					top: "50%",
 					left: "50%",
 					transform: "translate(-50%,-50%)",
 					padding: "1rem",
-					backgroundColor: "black",
+					backgroundColor: "white",
 					color: "white",
 					fontFamily: "Poppins",
+					borderRadius: "1rem",
 				}}
 			>
-				<Typography id="modal-modal-title" variant="h6" component="h2">
-					Text in a modal
-				</Typography>
-				<Typography id="modal-modal-description" sx={{ mt: 2 }}>
-					Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-				</Typography>
+				<Stack gap={2}>
+					<Stack direction="row" alignItems="center" justifyContent="space-between">
+						<Typography variant="h5" fontWeight={700} color="black">
+							{title}
+						</Typography>
+						<IconButton onClick={() => setOpen(false)}>
+							<CloseOutlined style={{ color: "black" }} />
+						</IconButton>
+					</Stack>
+					{imageUrl && (
+						<div
+							style={{
+								width: "100%",
+								height: "50%",
+								backgroundImage: `url(${imageUrl})`,
+								backgroundPosition: "center",
+								backgroundSize: "cover",
+								backgroundRepeat: "no-repeat",
+								aspectRatio: "16/9",
+								borderRadius: "1rem",
+							}}
+						/>
+					)}
+					<Typography color="black" variant="body1" fontWeight={500}>
+						{description}
+					</Typography>
+				</Stack>
 			</div>
 		</Modal>
 	);

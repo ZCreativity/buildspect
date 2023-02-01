@@ -31,7 +31,7 @@ const BuildingModel = ({ building }: BuildingProps) => {
 					<OrbitControls makeDefault ref={ref} />
 				</Suspense>
 			</Canvas> */}
-			<ModelViewer />
+			<ModelViewer building={building} />
 		</>
 	);
 };
