@@ -11,7 +11,7 @@ const Home = () => {
 			<h1>Buildspect</h1>
 			<SearchBar value={searchText} setValue={setSearchText} />
 			{buildings
-				.filter((building) => building.name.includes(searchText))
+				.filter((building) => building.name.toLowerCase().includes(searchText.toLowerCase()) || building.city.toLowerCase().includes(searchText.toLowerCase()))
 				.map((building) => {
 					return <BuildingCard key={building.name} building={building} />;
 				})}
