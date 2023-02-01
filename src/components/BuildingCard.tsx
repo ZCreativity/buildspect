@@ -6,9 +6,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 type BuildingCardProps = {
 	building: Building;
+	setSearchText: any;
 };
 
-const BuildingCard = ({ building }: BuildingCardProps) => {
+const BuildingCard = ({ building, setSearchText }: BuildingCardProps) => {
 	const navigate = useNavigate();
 
 	return (
@@ -43,6 +44,7 @@ const BuildingCard = ({ building }: BuildingCardProps) => {
 							label={building.city}
 							icon={<LocationOnOutlined />}
 							variant="filled"
+							onClick={() => setSearchText(building.city)}
 							style={{
 								background: "white",
 								padding: "0.25rem",

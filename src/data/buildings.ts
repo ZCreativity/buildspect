@@ -5,7 +5,7 @@ const THUMBNAIL_IMAGE_PATH = "../assets/thumbnails/";
 const buildings: Building[] = [
 	{
 		name: "Mole Antonelliana",
-		city: "Torino",
+		city: "Turin",
 		thumbnailImage: THUMBNAIL_IMAGE_PATH + "mole.png",
 		externalModel: "../assets/models/mole.glb",
 		description: "",
@@ -13,16 +13,16 @@ const buildings: Building[] = [
 		annotations: [],
 	},
 	{
-		name: "Colosseo",
-		city: "Roma",
+		name: "Colosseum",
+		city: "Rome",
 		thumbnailImage: THUMBNAIL_IMAGE_PATH + "colosseo.jpg",
 		externalModel: "../assets/models/colosseo/colosseum/scene.gltf",
 		description: "",
 		hasInternalModel: true,
 		annotations: [
 			{
-				title: "Anfiteatro",
-				description: "L'anfiteatro è il luogo dove si svolgevano le gare di gladiatori.",
+				title: "Podium",
+				description: "Podium is where gladiators fight.",
 				camPos: {
 					x: 0,
 					y: 0,
@@ -38,7 +38,7 @@ const buildings: Building[] = [
 	},
 	{
 		name: "Notre Dame",
-		city: "Parigi",
+		city: "Paris",
 		thumbnailImage: THUMBNAIL_IMAGE_PATH + "notre_dame.jpg",
 		externalModel: "../assets/models/notre_dame/scene.gltf",
 		description: "",
@@ -46,8 +46,8 @@ const buildings: Building[] = [
 		annotations: [],
 	},
 	{
-		name: "Torre Eiffel",
-		city: "Parigi",
+		name: "Eiffel Tower",
+		city: "Paris",
 		thumbnailImage: THUMBNAIL_IMAGE_PATH + "torre_eiffel.jpg",
 		externalModel: "../assets/models/eiffel_tower/scene.gltf",
 		description: "",
@@ -64,7 +64,7 @@ const buildings: Building[] = [
 		annotations: [],
 	},
 	{
-		name: "Torre di Pisa",
+		name: "Leaning Tower of Pisa",
 		city: "Pisa",
 		thumbnailImage: THUMBNAIL_IMAGE_PATH + "torre_di_pisa.jpg",
 		externalModel: "../assets/models/torre_di_pisa.glb",
@@ -83,7 +83,7 @@ const buildings: Building[] = [
 	},
 	{
 		name: "Pantheon",
-		city: "Roma",
+		city: "Rome",
 		thumbnailImage: THUMBNAIL_IMAGE_PATH + "pantheon.jpg",
 		externalModel: "../assets/models/pantheon.glb",
 		description: "",
