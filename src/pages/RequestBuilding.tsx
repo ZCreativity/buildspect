@@ -1,4 +1,4 @@
-import { IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -59,6 +59,13 @@ const RequestBuilding = () => {
 					setValue={setNotes}
 					placeHolder="Add some note you want to share with us"
 				/>
+				<Button
+					fullWidth
+					variant="contained"
+					sx={{ borderRadius: "2rem", height: 60, textTransform: "capitalize", fontSize: "1rem" }}
+				>
+					Send Request
+				</Button>
 			</Stack>
 		</Stack>
 	);
