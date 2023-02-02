@@ -6,13 +6,17 @@ import VideoCameraBackground from "../components/VideoCameraBackground";
 import { Help, HelpOutline, InfoOutlined } from "@mui/icons-material";
 import React from "react";
 import BuildingModal from "../components/BuildingModal";
+import useBackWithConfirmation from "../hooks/useBackWithConfirmation";
 
 const Scene = () => {
 	const location = useLocation();
 	const { building } = location.state;
-	const navigate = useNavigate();
 
 	const [open, setOpen] = React.useState(false);
+
+	const handleBack = useBackWithConfirmation(
+		"Are you sure you want to go back? The model will be reloaded and this may take a while."
+	);
 
 	return (
 		<>
@@ -31,7 +35,7 @@ const Scene = () => {
 				}}
 			>
 				<Stack direction="row" alignItems="center" justifyContent="space-between" padding={2}>
-					<IconButton onClick={() => navigate(-1)}>
+					<IconButton onClick={handleBack}>
 						<ArrowBackIcon style={{ color: "black", width: "2rem", height: "2rem" }} />
 					</IconButton>
 					<Typography variant="h6" fontWeight={700}>

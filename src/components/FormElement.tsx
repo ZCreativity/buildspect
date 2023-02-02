@@ -18,7 +18,7 @@ const FormElement = ({
 }: FormElementProps) => {
 	return (
 		<Stack gap={1}>
-			<Typography variant="h6" style={{ color: "black", fontSize: "1.1rem", fontWeight: 400 }}>
+			<Typography variant="h6" style={{ color: "black", fontSize: "1.1rem", fontWeight: 500 }}>
 				{title}
 			</Typography>
 			<TextField

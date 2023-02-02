@@ -52,14 +52,14 @@ const BuildingCard = ({ building, setSearchText }: BuildingCardProps) => {
 							}}
 						/>
 					</Stack>
-					<Stack direction="row" justifyContent="space-between" alignItems="end">
+					<Stack direction="row" justifyContent="space-between" alignItems="flex-end">
 						<Typography color="white" variant="h4" fontWeight={700}>
 							{building.name}
 						</Typography>
 						<Button
 							variant="contained"
 							color="primary"
-							style={{ borderRadius: 999, textTransform: "capitalize" }}
+							style={{ borderRadius: 999, textTransform: "capitalize", flexShrink: 0 }}
 							onClick={() => navigate("/scene", { state: { building } })}
 						>
 							View 3D
