@@ -56,7 +56,7 @@ const AnnotationModal = ({
 							}}
 						/>
 					)}
-					<Typography color="black" variant="body1" fontWeight={500}>
+					<Typography color="black" variant="body1" fontWeight={400} fontSize={14}>
 						{description}
 					</Typography>
 				</Stack>

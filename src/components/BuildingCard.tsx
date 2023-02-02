@@ -42,12 +42,11 @@ const BuildingCard = ({ building, setSearchText }: BuildingCardProps) => {
 					<Stack direction="row" justifyContent="flex-start">
 						<Chip
 							label={building.city}
-							icon={<LocationOnOutlined />}
+							icon={<LocationOnOutlined style={{ color: "black", width: 20, height: 20 }} />}
 							variant="filled"
 							onClick={() => setSearchText(building.city)}
 							style={{
 								background: "white",
-								padding: "0.25rem",
 								fontFamily: "Poppins",
 								fontWeight: 500,
 							}}
@@ -59,11 +58,11 @@ const BuildingCard = ({ building, setSearchText }: BuildingCardProps) => {
 						</Typography>
 						<Button
 							variant="contained"
-							color="info"
-							style={{ borderRadius: 999 }}
+							color="primary"
+							style={{ borderRadius: 999, textTransform: "capitalize" }}
 							onClick={() => navigate("/scene", { state: { building } })}
 						>
-							View
+							View 3D
 						</Button>
 					</Stack>
 				</div>

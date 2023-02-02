@@ -14,6 +14,7 @@ declare global {
 			ar: boolean;
 			children: any;
 			id: string;
+			loading: string;
 		}
 	}
 }
@@ -28,48 +29,28 @@ export const ModelViewer = ({ building }: ModelViewerPropsType) => {
 	const [annotationDescription, setAnnotationDescription] = useState("");
 	const [annotationImageUrl, setAnnotationImageUrl] = useState("");
 
-	useLayoutEffect(() => {
-		const modelViewer = document.getElementById("model-viewer") as any;
-		modelViewer.addEventListener("ar-status", (status: any) => {
-			modelViewer.setAttribute("camera-orbit", "0deg 90deg 10%");
-		});
+	// useLayoutEffect(() => {
+	// 	const modelViewer = document.getElementById("model-viewer") as any;
+	// 	modelViewer.addEventListener("ar-status", (status: any) => {
+	// 		modelViewer.setAttribute("camera-orbit", "0deg 90deg 10%");
+	// 	});
+	// });
+
+	window.addEventListener("beforeunload", () => {
+		return "Are you sure you want to leave? Leave will cause the model to be reloaded";
 	});
 
 	return (
 		<model-viewer
 			id="model-viewer"
 			camera-controls
+			loading="eager"
 			touch-action="pan-y"
 			ar
-			src="../assets/models/colosseo/colosseum/scene.gltf"
-			ios-src="../assets/models/colosseo/colosseum.usdz"
+			src="../assets/models/colosseo/colosseo.glb"
+			ios-src="../assets/models/colosseo/colosseo.usdz"
 			xr-environment
 		>
-			{/* <button
-				className="Hotspot"
-				slot="hotspot-2"
-				data-surface="5 0 9600 9601 9602 0.376 0.057 0.567"
-				data-visibility-attribute="visible"
-			>
-				<div className="HotspotAnnotation">1</div>
-			</button>
-			<button
-				className="Hotspot"
-				slot="hotspot-3"
-				data-surface="5 0 3063 3063 3063 0.300 0.005 0.695"
-				data-visibility-attribute="visible"
-			>
-				<div className="HotspotAnnotation">2</div>
-			</button>
-			<button
-				className="Hotspot"
-				slot="hotspot-4"
-				data-surface="41 0 37476 37477 37478 0.058 0.318 0.624"
-				data-visibility-attribute="visible"
-			>
-				<div className="HotspotAnnotation">3</div>
-			</button> */}
-
 			<button
 				className="Hotspot"
 				slot="hotspot-1"

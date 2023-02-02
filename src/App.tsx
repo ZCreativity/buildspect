@@ -5,6 +5,11 @@ import Scene from "./pages/Scene";
 import RequestBuilding from "./pages/RequestBuilding";
 
 let theme = createTheme({
+	palette: {
+		primary: {
+			main: "#009384",
+		},
+	},
 	typography: {
 		fontFamily: "Poppins",
 	},
