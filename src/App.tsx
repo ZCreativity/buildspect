@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material";
 import Scene from "./pages/Scene";
 import RequestBuilding from "./pages/RequestBuilding";
 import { ConfirmProvider } from "material-ui-confirm";
+import EmailResult from "./pages/EmailResult";
 
 let theme = createTheme({
 	palette: {
@@ -28,6 +29,8 @@ function App() {
 							<Route path="/" element={<Home />} />
 							<Route path="/scene" element={<Scene />} />
 							<Route path="/request" element={<RequestBuilding />} />
+							<Route path="/email-result" element={<EmailResult />} />
+							<Route path="*" element={<Home />} />
 						</Routes>
 					</BrowserRouter>
 				</div>

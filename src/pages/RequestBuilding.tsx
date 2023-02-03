@@ -1,21 +1,67 @@
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, CircularProgress, IconButton, Stack, TextField, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormElement from "../components/FormElement";
 import { useConfirm } from "material-ui-confirm";
 import useBackWithConfirmation from "../hooks/useBackWithConfirmation";
+import emailjs from "@emailjs/browser";
+import { Formik, FormikValues, useFormik } from "formik";
+import * as Yup from "yup";
+
+const SERVICE_ID = "service_gh3e35v";
+const TEMPLATE_ID = "building_request_id";
+const PUBLIC_KEY = "stM_D5c1vCGLFYvZu";
 
 const RequestBuilding = () => {
+	const navigate = useNavigate();
+	const formRef = React.useRef<HTMLFormElement>(null);
 	const handleBack = useBackWithConfirmation(
 		"Are you sure you want to go back? You will lose all the inserted data."
 	);
 
-	const [buildingName, setBuildingName] = React.useState<string>("");
-	const [buildingLocation, setBuildingLocation] = React.useState<string>("");
-	const [buildingYear, setBuildingYear] = React.useState<string>("");
-	const [notes, setNotes] = React.useState<string>("");
-	const [senderName, setSenderName] = React.useState<string>("");
+	const [loading, setLoading] = React.useState(false);
+
+	const validationSchema = Yup.object().shape({
+		building_name: Yup.string().required("Required"),
+		building_location: Yup.string().required("Required"),
+		sender_email: Yup.string().email("Invalid email").required("Required"),
+		sender_name: Yup.string().required("Required"),
+		notes: Yup.string(),
+	});
+
+	const formik = useFormik({
+		initialValues: {
+			building_name: "",
+			building_location: "",
+			sender_email: "",
+			sender_name: "",
+			message: "",
+		},
+		validationSchema,
+		onSubmit: (values) => {
+			console.log(values);
+			setLoading(true);
+			sendEmail();
+		},
+	});
+
+	const sendEmail = () => {
+		if (formRef.current) {
+			emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY).then(
+				(result) => {
+					console.log(result.text);
+					setLoading(false);
+					navigate("/email-result", { state: { success: true } });
+				},
+				(error) => {
+					console.log(error.text);
+					setLoading(false);
+					navigate("/email-result", { state: { success: false } });
+				}
+			);
+		}
+	};
 
 	return (
 		<Stack padding={2}>
@@ -27,46 +73,78 @@ const RequestBuilding = () => {
 					Propose building
 				</Typography>
 			</Stack>
-			<Stack gap={4} padding={2}>
-				<FormElement
-					title="Building's name"
-					value={buildingName}
-					setValue={setBuildingName}
-					placeHolder="Insert building's name"
-				/>
-				<FormElement
-					title="Location"
-					value={buildingLocation}
-					setValue={setBuildingLocation}
-					placeHolder="Insert building's location/city"
-				/>
-				<FormElement
-					title="Year of construction"
-					value={buildingName}
-					setValue={setBuildingName}
-					placeHolder="Insert building's year of construction"
-				/>
-				<FormElement
-					title="Your name"
-					value={senderName}
-					setValue={setSenderName}
-					placeHolder="Insert your name"
-				/>
-				<FormElement
-					title="Notes"
-					value={notes}
-					multiline
-					setValue={setNotes}
-					placeHolder="Add some note you want to share with us"
-				/>
-				<Button
-					fullWidth
-					variant="contained"
-					sx={{ borderRadius: "2rem", height: 60, textTransform: "capitalize", fontSize: "1rem" }}
-				>
-					Send Request
-				</Button>
-			</Stack>
+			<form ref={formRef} onSubmit={formik.handleSubmit}>
+				<Stack gap={4} padding={2} marginTop={2}>
+					<Typography variant="h5" fontWeight={500}>
+						Building's info
+					</Typography>
+					<FormElement
+						title="Name"
+						name="building_name"
+						value={formik.values.building_name}
+						formikHandleChange={formik.handleChange}
+						placeHolder="Insert building's name"
+						formikError={formik.errors.building_name}
+						formikTouched={formik.touched.building_name}
+					/>
+					<FormElement
+						name="building_location"
+						title="Location"
+						value={formik.values.building_location}
+						placeHolder="Insert building's location/city"
+						formikHandleChange={formik.handleChange}
+						formikError={formik.errors.building_location}
+						formikTouched={formik.touched.building_location}
+					/>
+					<Typography variant="h5" fontWeight={500}>
+						Your info
+					</Typography>
+
+					<FormElement
+						name="sender_email"
+						title="Email"
+						value={formik.values.sender_email}
+						placeHolder="youremail@exaple.com"
+						formikHandleChange={formik.handleChange}
+						formikError={formik.errors.sender_email}
+						formikTouched={formik.touched.sender_email}
+					/>
+					<FormElement
+						name="sender_name"
+						title="Name"
+						value={formik.values.sender_name}
+						placeHolder="Insert your name"
+						formikHandleChange={formik.handleChange}
+						formikError={formik.errors.sender_name}
+						formikTouched={formik.touched.sender_name}
+					/>
+					<FormElement
+						name="message"
+						title="Notes"
+						value={formik.values.message}
+						multiline
+						placeHolder="Add some note you want to share with us"
+						formikHandleChange={formik.handleChange}
+						formikError={formik.errors.message}
+						formikTouched={formik.touched.message}
+					/>
+
+					<Button
+						fullWidth
+						type="submit"
+						variant="contained"
+						endIcon={loading ? <CircularProgress size={20} /> : null}
+						sx={{
+							borderRadius: "2rem",
+							height: 60,
+							textTransform: "capitalize",
+							fontSize: "1rem",
+						}}
+					>
+						Send Request
+					</Button>
+				</Stack>
+			</form>
 		</Stack>
 	);
 };

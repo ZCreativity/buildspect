@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@google/model-viewer": "^2.1.1",
@@ -16,12 +17,14 @@
     "@mui/material": "^5.11.6",
     "@react-three/drei": "^9.56.4",
     "@react-three/fiber": "^8.10.1",
+    "formik": "^2.2.9",
     "material-ui-confirm": "^3.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "react-webcam": "^7.0.1",
-    "three": "^0.149.0"
+    "three": "^0.149.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
