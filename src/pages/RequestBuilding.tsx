@@ -133,7 +133,7 @@ const RequestBuilding = () => {
 						fullWidth
 						type="submit"
 						variant="contained"
-						endIcon={loading ? <CircularProgress size={20} /> : null}
+						endIcon={loading ? <CircularProgress size={20} style={{ color: "white" }} /> : null}
 						sx={{
 							borderRadius: "2rem",
 							height: 60,

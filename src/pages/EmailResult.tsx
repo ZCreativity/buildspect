@@ -11,7 +11,7 @@ const EmailResult = () => {
 		<div
 			style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
 		>
-			<Stack gap={3} alignItems="center">
+			<Stack gap={3} alignItems="center" justifyContent="center" style={{ textAlign: "center" }}>
 				{success ? (
 					<CheckCircleOutline style={{ color: "green", fontSize: "3rem" }} />
 				) : (

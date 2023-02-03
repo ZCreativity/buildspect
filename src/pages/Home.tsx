@@ -4,6 +4,7 @@ import { buildings } from "../data/buildings";
 import BuildingCard from "../components/BuildingCard";
 import { Building } from "../data/types";
 import NoResults from "../components/NoResults";
+import { Box, Container } from "@mui/material";
 
 const Home = () => {
 	const [searchText, setSearchText] = React.useState<string>("");
@@ -32,8 +33,10 @@ const Home = () => {
 
 	return (
 		<div style={{ padding: "1rem 2rem" }}>
-			<h1>Buildspect</h1>
-			<SearchBar value={searchText} setValue={setSearchText} />
+			<>
+				<h1>BuildSpect</h1>
+				<SearchBar value={searchText} setValue={setSearchText} />
+			</>
 			{buildingsList &&
 				buildingsList.map((building) => {
 					return (
