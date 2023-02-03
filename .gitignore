@@ -25,4 +25,4 @@ package-lock.json
 *.sw?
 
 # 3D models
-public/assets/models/**/*
+# public/assets/models/**/*
