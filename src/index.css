@@ -27,7 +27,15 @@ html, body {
   height: 30px;
   border-radius: 1rem;
   border: none;
-  background-color: white;
+  color: white;
+  font-weight: bold;
+  background-color: #009384;
   font-family: "Poppins";
   box-sizing: border-box;
+}
+
+.ar-button {
+  position: "absolute";
+  bottom: 0;
+  right: 0;
 }

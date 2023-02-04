@@ -3,6 +3,7 @@ import { Box, Modal, Typography } from "@mui/material";
 import { useLayoutEffect, useState } from "react";
 import AnnotationModal from "./AnnotationModal";
 import { Building } from "../data/types";
+import ViewInArIcon from "@mui/icons-material/ViewInAr";
 
 declare global {
 	namespace JSX {
@@ -95,6 +96,32 @@ export const ModelViewer = ({ building }: ModelViewerPropsType) => {
 				}}
 			>
 				<div className="HotspotAnnotation">3</div>
+			</button>
+			<button
+				slot="ar-button"
+				className="ar-button"
+				style={{
+					position: "absolute",
+					bottom: 10,
+					right: 10,
+					background: "#009384",
+					color: "white",
+					padding: 10,
+					borderRadius: 90,
+					border: "none",
+					boxShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
+					width: 150,
+					height: 50,
+					fontFamily: "Poppins",
+					fontSize: 16,
+					fontWeight: 500,
+					display: "flex",
+					alignItems: "center",
+					textAlign: "center",
+					justifyContent: "center",
+				}}
+			>
+				<ViewInArIcon style={{ marginRight: 7 }} /> View in AR
 			</button>
 			<AnnotationModal
 				open={modal}
