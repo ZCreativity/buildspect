@@ -15,10 +15,6 @@ const NoResults = ({ searchText }: NoResultsProps) => {
 	return (
 		<Stack style={{ height: "100%", width: "100%", textAlign: "center" }} gap={3}>
 			<Stack direction="row" alignItems="center" justifyContent="space-around">
-				{/* <SearchIcon style={{ fontSize: "2rem", color: "black" }} />
-				<MoreHorizOutlinedIcon style={{ fontSize: "2rem", color: "black", marginInline: -40 }} />
-				<CloseOutlinedIcon style={{ fontSize: "2rem", color: "black" }} />
-				<MoreHorizOutlinedIcon style={{ fontSize: "2rem", color: "black", marginInline: -40 }} /> */}
 				<SentimentVeryDissatisfiedIcon style={{ fontSize: "2rem", color: "black" }} />
 			</Stack>
 			<Typography>
