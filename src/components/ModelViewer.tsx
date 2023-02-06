@@ -30,15 +30,8 @@ export const ModelViewer = ({ building }: ModelViewerPropsType) => {
 	const [annotationDescription, setAnnotationDescription] = useState("");
 	const [annotationImageUrl, setAnnotationImageUrl] = useState("");
 
-	// useLayoutEffect(() => {
-	// 	const modelViewer = document.getElementById("model-viewer") as any;
-	// 	modelViewer.addEventListener("ar-status", (status: any) => {
-	// 		modelViewer.setAttribute("camera-orbit", "0deg 90deg 10%");
-	// 	});
-	// });
-
 	window.addEventListener("beforeunload", () => {
-		return "Are you sure you want to leave? Leave will cause the model to be reloaded";
+		return "";
 	});
 
 	return (
@@ -48,8 +41,8 @@ export const ModelViewer = ({ building }: ModelViewerPropsType) => {
 			loading="eager"
 			touch-action="pan-y"
 			ar
-			src="../assets/models/colosseo/colosseo.glb"
-			ios-src="../assets/models/colosseo/colosseo.usdz"
+			src={building.model}
+			ios-src={building.iosModel}
 			xr-environment
 		>
 			<button

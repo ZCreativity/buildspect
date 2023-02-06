@@ -64,7 +64,7 @@ const BuildingModal = ({ open, setOpen, building }: BuildingModalPropsType) => {
 							}}
 						/>
 						<Chip
-							label="72-81 A.D."
+							label={"Built in " + building.builtDate}
 							icon={<AccessTimeIcon style={{ color: "black", width: 20, height: 20 }} />}
 							variant="filled"
 							color="default"
@@ -77,23 +77,25 @@ const BuildingModal = ({ open, setOpen, building }: BuildingModalPropsType) => {
 					<Typography color="black" variant="body1" fontWeight={400} fontSize={14}>
 						{building.description}
 					</Typography>
-					<Button
-						variant="contained"
-						color="primary"
-						style={{
-							width: "100%",
-							textTransform: "capitalize",
-							borderRadius: ".5rem",
-							backgroundColor: "black",
-						}}
-						onClick={() => window.open("https://it.wikipedia.org/wiki/Colosseo", "_blank")}
-					>
-						Read More on Wikipedia
-						<img
-							src="../assets/svg/wikipedia.svg"
-							style={{ width: "1.25rem", marginLeft: ".5rem" }}
-						/>
-					</Button>
+					{building.wikipedia && (
+						<Button
+							variant="contained"
+							color="primary"
+							style={{
+								width: "100%",
+								textTransform: "none",
+								borderRadius: ".5rem",
+								backgroundColor: "black",
+							}}
+							onClick={() => window.open(building.wikipedia, "_blank")}
+						>
+							Read More on Wikipedia
+							<img
+								src="../assets/svg/wikipedia.svg"
+								style={{ width: "1.25rem", marginLeft: ".5rem" }}
+							/>
+						</Button>
+					)}
 				</Stack>
 			</div>
 		</Modal>

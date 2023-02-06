@@ -25,10 +25,10 @@ const EmailResult = () => {
 				<Button
 					variant="contained"
 					color="primary"
-					sx={{ height: 60, borderRadius: "1rem", width: "90%", textTransform: "capitalize" }}
+					sx={{ height: 60, borderRadius: "1rem", width: "90%", textTransform: "none" }}
 					onClick={() => navigate("/")}
 				>
-					Back to Home
+					Go back to home page
 				</Button>
 			</Stack>
 		</div>
